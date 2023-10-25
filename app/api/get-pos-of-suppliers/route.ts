@@ -1,8 +1,15 @@
-import getXlsxData from "./getXlsxData"
+import getXlsxData from "@/actions/getXlsxData";
+import { NextRequest} from "next/server";
 
-const getPosAndDesc = async (supplierName: string) => {
-    return await getXlsxData().then((data) => {
-        const supplierData =  data.filter((item: any) => {
+
+export const GET = async (req: NextRequest) => {
+
+    try {
+        const url = new URL(req.url)
+        const supplierName = url.searchParams.get('supplierName')
+
+        const data = getXlsxData()
+        const supplierData = data.filter((item: any) => {
             return item['Supplier'].trim() === supplierName
         })
 
@@ -25,11 +32,11 @@ const getPosAndDesc = async (supplierName: string) => {
 
         }, [])
 
-        return { supplierPosAndDesc }
-
-    }).catch((err) => {
-        new Error(err.message)
-    })
+        return new Response(JSON.stringify(supplierPosAndDesc), {
+            status: 200,
+        })
+    } catch (error: any) {
+        console.log(error.message);
+        return new Response(JSON.stringify('Internal Server Error!!'), { status: 500 })
+    }
 }
-
-export default getPosAndDesc

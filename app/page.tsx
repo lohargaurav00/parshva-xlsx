@@ -1,5 +1,16 @@
+"use client"
+
+import Header from "@/components/Header"
+import { DocketTable } from "@/components/Table"
 
 
-export default function Home() {
+const page = () => {
+
+   return <div>
+      <Header />
+      <DocketTable />
+   </div>
 
 }
+
+export default page

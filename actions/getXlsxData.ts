@@ -1,6 +1,7 @@
 import xlsx from 'xlsx'
 
-const getXlsxData = async () => {
+const getXlsxData = () => {
+
   const workbook = xlsx.readFile('./export29913.xlsx');
   
   const sheet_name_list = workbook.SheetNames;
