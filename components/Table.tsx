@@ -9,6 +9,17 @@ import {
 
 import data from '../dockets.json'
 
+type Docket = {
+  name: string
+  startTime: string
+  endTime: string
+  noOfHoursWorked: string
+  ratePerHour: string
+  suppliers: string
+  purchaseOrder: string
+  description: string
+}
+
 export function DocketTable() {
   return (
     <Table>
@@ -26,7 +37,7 @@ export function DocketTable() {
       </TableHeader>
       <TableBody>
         {
-          data.map((docket, index) => (
+          data.map((docket: Docket, index: any) => (
             <TableRow key={index}>
               <TableCell >{docket.name}</TableCell>
               <TableCell >{docket.startTime}</TableCell>
