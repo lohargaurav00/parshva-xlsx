@@ -228,7 +228,7 @@ export default function InputForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent className="h-[300px]" >
-                  {posAndDesc.map((po, index) => (
+                  {posAndDesc && posAndDesc.map((po, index) => (
                     <>
                       <SelectItem key={`${po}-${index}`} value={`${index}`} data-tooltip-id={`tooltip`} data-tooltip-content={po.description}>
                         {po.poNumber}
