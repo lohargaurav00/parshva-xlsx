@@ -1,15 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from 'fs';
+import path from "path";
 
 export const POST = async (req: NextRequest,) => {
     try {
         const docketData = await req.json();
 
+        const filePath = path.join(process.cwd(), "dockets.json");
+
         // Read the existing data from the file, or initialize an empty array if the file doesn't exist yet
         let existingData = [];
         
         try {
-            const fileData = fs.readFileSync("./dockets.json", "utf8");
+            const fileData = fs.readFileSync(filePath, "utf8");
             existingData = JSON.parse(fileData);
         } catch (error) {
             // If the file doesn't exist, it will be created later
