@@ -8,7 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import data from '../dockets.json'
+import data from '@/dockets.json'
 
 type Docket = {
   name: string
